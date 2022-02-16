@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import {NewComponent} from "./NewComponent";
+import OnOff from "./onOff";
 
 export type StudentType = {
     id: number,
@@ -60,9 +61,12 @@ function App() {
 
     return (
         <div>
-            <NewComponent students={filterStudents()} removeStudents={removeStudents}
+            <OnOff/>
+            <OnOff/>
+            <OnOff/>
+            {/*<NewComponent students={filterStudents()} removeStudents={removeStudents}
                           changeStudents={changeStudents} addNewStudent={addNewStudent}
-                          topCars={topCar} addNewCars={addNewCars}/>
+                          topCars={topCar} addNewCars={addNewCars}/>*/}
         </div>
     );
 }
