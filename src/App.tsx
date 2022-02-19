@@ -1,10 +1,17 @@
 import React, {useState} from 'react';
 import './App.css';
 import {NewComponent} from "./NewComponent";
-import OnOff from "./onOff";
+import {Accordion} from "./Accordion/Accordion";
+import {UncontrolledAccordion} from './Accordion/UncontrolledAccordion';
+import OnOff from "./OnOff/OnOf";
+import UncontrolledOnOff from "./OnOff/UncontrolledonOff";
+import {v1} from "uuid";
+import {Rating, RatingValueType} from './Raiting/Raiting';
+import {UncontrolledRating} from "./Raiting/UncontrolledRating";
+
 
 export type StudentType = {
-    id: number,
+    id: string,
     name: string,
     age: number
 }
@@ -24,17 +31,17 @@ function App() {
         {manufacturer: 'Opel', model: 'cadet'}
     ])
     let [students, setStudents] = useState([
-        {id: 1, name: "James", age: 8},
-        {id: 2, name: "Robert", age: 18},
-        {id: 3, name: "John", age: 28},
-        {id: 4, name: "Michael", age: 38},
-        {id: 5, name: "William", age: 48},
-        {id: 6, name: "David", age: 58},
-        {id: 7, name: "Richard", age: 68},
-        {id: 8, name: "Joseph", age: 78},
-        {id: 9, name: "Thomas", age: 88},
-        {id: 10, name: "Charles", age: 98},
-        {id: 11, name: "Christopher", age: 100},
+        {id: v1(), name: "James", age: 8},
+        {id: v1(), name: "Robert", age: 18},
+        {id: v1(), name: "John", age: 28},
+        {id: v1(), name: "Michael", age: 38},
+        {id: v1(), name: "William", age: 48},
+        {id: v1(), name: "David", age: 58},
+        {id: v1(), name: "Richard", age: 68},
+        {id: v1(), name: "Joseph", age: 78},
+        {id: v1(), name: "Thomas", age: 88},
+        {id: v1(), name: "Charles", age: 98},
+        {id: v1(), name: "Christopher", age: 100},
     ])
     let [filter, setFilter] = useState('')
     const filterStudents = () => {
@@ -50,23 +57,36 @@ function App() {
         setFilter(filter)
     }
     const addNewStudent = (newStudent: string) => {
-        setStudents([{id: 12, name: newStudent, age: 5}, ...students])
+        setStudents([{id: v1(), name: newStudent, age: students.length}, ...students])
     }
     const addNewCars = (cars: string) => {
         setTopCar([...topCar, {manufacturer: cars, model: 'm5'}])
     }
-    const removeStudents = (id: number) => {
+    const removeStudents = (id: string) => {
         setStudents(students.filter(f => f.id !== id))
+    }
+
+    let [value, setValue] = useState<RatingValueType>(0)
+    let [on, setOn] = useState(false)
+    let [collapsed, setCollapsed] = useState(false)
+    const callBackAccordionHandler = () => {
+        setCollapsed(!collapsed)
+    }
+    const callBackOnOffHandler = () => {
+        setOn(!on)
     }
 
     return (
         <div>
-            <OnOff/>
-            <OnOff/>
-            <OnOff/>
-            {/*<NewComponent students={filterStudents()} removeStudents={removeStudents}
+            <Rating value={value} onClick={setValue}/>
+            <UncontrolledRating/>
+            <UncontrolledAccordion/>
+            <Accordion title={'=Menu='} callBack={callBackAccordionHandler} collapsed={collapsed}/>
+            <OnOff value={on} callBack={callBackOnOffHandler}/>
+            <UncontrolledOnOff/>
+            <NewComponent students={filterStudents()} removeStudents={removeStudents}
                           changeStudents={changeStudents} addNewStudent={addNewStudent}
-                          topCars={topCar} addNewCars={addNewCars}/>*/}
+                          topCars={topCar} addNewCars={addNewCars}/>
         </div>
     );
 }
