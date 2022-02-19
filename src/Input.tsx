@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useState, KeyboardEvent} from 'react';
 
 type InputType = {
     addNewStudent: (newStudent: string) => void
@@ -14,10 +14,15 @@ const Input = (props: InputType) => {
         props.addNewStudent(newStudent)
         setNewStudent('')
     }
+    const onKeyPressHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            onClickHandler()
+        }
+    }
 
     return (
         <h2>
-            <input value={newStudent} onChange={onChangeHandler}/>
+            <input value={newStudent} onChange={onChangeHandler} onKeyPress={onKeyPressHandler}/>
             <button onClick={onClickHandler}>add
             </button>
         </h2>
