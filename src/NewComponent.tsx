@@ -7,22 +7,23 @@ import TopCars from "./TopCars";
 type NewComponentType = {
     students: StudentType[]
     topCars: TopCarsType[]
-    removeStudents:( id:number )=>void
-    changeStudents:(filter: FilterType) => void
-    addNewStudent: (newStudent:string)=> void
-    addNewCars: (cars:string)=>void
+    removeStudents: (id: string) => void
+    changeStudents: (filter: FilterType) => void
+    addNewStudent: (newStudent: string) => void
+    addNewCars: (cars: string) => void
 }
 
 
 export const NewComponent = (props: NewComponentType) => {
-   /* const foo1 = () => {
-        console.log('100200')
-    }
-    const foo2 = (name: string) => {
-        console.log(name)
-    }*/
+    /* const foo1 = () => {
+         console.log('100200')
+     }
+     const foo2 = (name: string) => {
+         console.log(name)
+     }*/
     const studentsHandler = props.students.map(s => <li key={s.id}><span>{s.name}</span> <span>{s.age}</span>
-        <button onClick={()=>props.removeStudents(s.id)}>x</button></li>)
+        <button onClick={() => props.removeStudents(s.id)}>x</button>
+    </li>)
 
     return (
         <div>
