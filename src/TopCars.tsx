@@ -1,5 +1,6 @@
 import React, {ChangeEvent, useState, KeyboardEvent} from 'react';
 import {TopCarsType} from "./App";
+import {FullButtons} from "./FullButtons";
 
 type TopCars = {
     topCars: TopCarsType[]
@@ -27,7 +28,8 @@ const TopCars = (props: TopCars) => {
         <div>
             <div>
                 <input value={cars} onChange={onChangeHandler} onKeyPress={onKeyPressHandler}/>
-                <button onClick={onClickHandler}>add new car</button>
+                {/*<button onClick={onClickHandler}>add new car</button>*/}
+                <FullButtons name={'add new car'} callBack={onClickHandler}/>
             </div>
             <table>
                 <tr>
