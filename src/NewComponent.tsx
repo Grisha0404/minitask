@@ -3,6 +3,7 @@ import {FilterType, StudentType, TopCarsType} from "./App";
 import Buttons from "./Buttons";
 import Input from "./Input";
 import TopCars from "./TopCars";
+import {FullButtons} from "./FullButtons";
 
 type NewComponentType = {
     students: StudentType[]
@@ -22,7 +23,8 @@ export const NewComponent = (props: NewComponentType) => {
          console.log(name)
      }*/
     const studentsHandler = props.students.map(s => <li key={s.id}><span>{s.name}</span> <span>{s.age}</span>
-        <button onClick={() => props.removeStudents(s.id)}>x</button>
+        {/*<button onClick={() => props.removeStudents(s.id)}>x</button>*/}
+        <FullButtons name={'x'} callBack={() => props.removeStudents(s.id)}/>
     </li>)
 
     return (
