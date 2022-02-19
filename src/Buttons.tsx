@@ -1,5 +1,6 @@
 import React from 'react';
 import {FilterType} from "./App";
+import {FullButtons} from "./FullButtons";
 
 type ButtonsType= {
     changeStudents:(filter: FilterType) => void
@@ -17,9 +18,12 @@ const Buttons = (props:ButtonsType) => {
     }
     return (
         <div>
-            <button onClick={onClickAllHandler}>all students</button>
-            <button onClick= {onClickMiddleHandler}>middle students</button>
-            <button onClick={onClickOldHandler}>old students</button>
+            <FullButtons name={'all students'} callBack={onClickAllHandler}/>
+            <FullButtons name={'middle students'} callBack={onClickMiddleHandler}/>
+            <FullButtons name={'old students'} callBack={onClickOldHandler}/>
+            {/*<button onClick={onClickAllHandler}>all students</button>*/}
+            {/*<button onClick= {onClickMiddleHandler}>middle students</button>
+            <button onClick={onClickOldHandler}>old students</button>*/}
         </div>
     );
 };
