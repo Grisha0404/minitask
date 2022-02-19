@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useState, KeyboardEvent} from 'react';
 import {TopCarsType} from "./App";
 
 type TopCars = {
@@ -17,11 +17,16 @@ const TopCars = (props: TopCars) => {
         props.addNewCars(cars)
         setCars('')
     }
+    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            onClickHandler()
+        }
+    }
 
     return (
         <div>
             <div>
-                <input value={cars} onChange={onChangeHandler}/>
+                <input value={cars} onChange={onChangeHandler} onKeyPress={onKeyPressHandler}/>
                 <button onClick={onClickHandler}>add new car</button>
             </div>
             <table>
