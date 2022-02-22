@@ -8,6 +8,7 @@ import UncontrolledOnOff from "./OnOff/UncontrolledonOff";
 import {v1} from "uuid";
 import {Rating, RatingValueType} from './Raiting/Raiting';
 import {UncontrolledRating} from "./Raiting/UncontrolledRating";
+import {Counter} from "./Caunter/Caunter";
 
 
 export type StudentType = {
@@ -78,6 +79,7 @@ function App() {
 
     return (
         <div>
+            <Counter/>
             <Rating value={value} onClick={setValue}/>
             <UncontrolledRating/>
             <UncontrolledAccordion/>
