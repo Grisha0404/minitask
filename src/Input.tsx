@@ -1,4 +1,6 @@
 import React, {ChangeEvent, useState, KeyboardEvent} from 'react';
+import {FullButtons} from "./FullButtons";
+
 
 type InputType = {
     addNewStudent: (newStudent: string) => void
@@ -23,8 +25,7 @@ const Input = (props: InputType) => {
     return (
         <h2>
             <input value={newStudent} onChange={onChangeHandler} onKeyPress={onKeyPressHandler}/>
-            <button onClick={onClickHandler}>add
-            </button>
+            <FullButtons name={'add'} callBack={onClickHandler}/>
         </h2>
     );
 };
