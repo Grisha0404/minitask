@@ -9,6 +9,7 @@ import {v1} from "uuid";
 import {Rating, RatingValueType} from './Raiting/Raiting';
 import {UncontrolledRating} from "./Raiting/UncontrolledRating";
 import {Counter} from "./Caunter/Caunter";
+import {LocalStorage} from "./LocalStorage/LocalStorage";
 
 
 export type StudentType = {
@@ -79,7 +80,8 @@ function App() {
 
     return (
         <div>
-            <Counter/>
+            <LocalStorage/>
+            {/*<Counter/>
             <Rating value={value} onClick={setValue}/>
             <UncontrolledRating/>
             <UncontrolledAccordion/>
@@ -88,7 +90,7 @@ function App() {
             <UncontrolledOnOff/>
             <NewComponent students={filterStudents()} removeStudents={removeStudents}
                           changeStudents={changeStudents} addNewStudent={addNewStudent}
-                          topCars={topCar} addNewCars={addNewCars}/>
+                          topCars={topCar} addNewCars={addNewCars}/>*/}
         </div>
     );
 }
