@@ -1,15 +1,11 @@
 import React, {useState} from 'react';
 import './App.css';
-import {NewComponent} from "./NewComponent";
-import {Accordion} from "./Accordion/Accordion";
-import {UncontrolledAccordion} from './Accordion/UncontrolledAccordion';
-import OnOff from "./OnOff/OnOf";
-import UncontrolledOnOff from "./OnOff/UncontrolledonOff";
 import {v1} from "uuid";
-import {Rating, RatingValueType} from './Raiting/Raiting';
-import {UncontrolledRating} from "./Raiting/UncontrolledRating";
-import {Counter} from "./Caunter/Caunter";
+import {RatingValueType} from './Raiting/Raiting';
+
 import {LocalStorage} from "./LocalStorage/LocalStorage";
+import {ItemsType, SuperSelected} from "./Selected/SuperSelected";
+import {UncontrolledAccordion} from "./Accordion/UncontrolledAccordion";
 
 
 export type StudentType = {
@@ -78,14 +74,28 @@ function App() {
         setOn(!on)
     }
 
+
+const [valueSelect, setValueSelect] = useState('1')
+    const changeSelect = (value: string) => {
+        setValueSelect(value)
+    }
+    const citySelect:ItemsType[] = [
+        {title: 'Минская', id: '1'},
+        {title: 'Гомельская', id: '2'},
+        {title: 'Витебская', id: '3'},
+        {title: 'Брестская', id: '4'},
+        {title: 'Гродненская', id: '5'},
+        {title: 'Могилевская', id: '6'}
+    ]
     return (
         <div>
-            <LocalStorage/>
+            {/*<SuperSelected value={valueSelect} onChange={changeSelect} title={citySelect}/>*/}
+            {/*<LocalStorage/>*/}
             {/*<Counter/>
-            <Rating value={value} onClick={setValue}/>
-            <UncontrolledRating/>
+            <Rating value={value} onClick={setValue}/>*/}
+            {/*<UncontrolledRating/>*/}
             <UncontrolledAccordion/>
-            <Accordion title={'=Menu='} callBack={callBackAccordionHandler} collapsed={collapsed}/>
+            {/*<Accordion title={'=Menu='} callBack={callBackAccordionHandler} collapsed={collapsed}/>
             <OnOff value={on} callBack={callBackOnOffHandler}/>
             <UncontrolledOnOff/>
             <NewComponent students={filterStudents()} removeStudents={removeStudents}
