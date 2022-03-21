@@ -1,11 +1,17 @@
 import React, {useState} from 'react';
 import './App.css';
 import {v1} from "uuid";
-import {RatingValueType} from './Raiting/Raiting';
+import {Rating, RatingValueType} from './Raiting/Raiting';
 
 import {LocalStorage} from "./LocalStorage/LocalStorage";
 import {ItemsType, SuperSelected} from "./Selected/SuperSelected";
 import {UncontrolledAccordion} from "./Accordion/UncontrolledAccordion";
+import {UncontrolledRating} from "./Raiting/UncontrolledRating";
+import UncontrolledOnOff from "./OnOff/UncontrolledonOff";
+import {NewComponent} from "./NewComponent";
+import {Accordion} from "./Accordion/Accordion";
+import OnOff from "./OnOff/OnOf";
+import {Counter} from "./Caunter/Caunter";
 
 
 export type StudentType = {
@@ -87,20 +93,30 @@ const [valueSelect, setValueSelect] = useState('1')
         {title: 'Гродненская', id: '5'},
         {title: 'Могилевская', id: '6'}
     ]
+    const SuperSelectMemo = React.memo(SuperSelected)
+    const LocalStorageMemo = React.memo(LocalStorage)
+    const CounterMemo = React.memo(Counter)
+    const RatingMemo = React.memo(Rating)
+    const UncontrolledRatingMemo = React.memo(UncontrolledRating)
+    const UncontrolledAccordionMemo = React.memo(UncontrolledAccordion)
+    const AccordionMemo = React.memo(Accordion)
+    const OnOffMemo = React.memo(OnOff)
+    const UncontrolledOnOffMemo = React.memo(UncontrolledOnOff)
+    const NewComponentMemo = React.memo(NewComponent)
     return (
         <div>
-            {/*<SuperSelected value={valueSelect} onChange={changeSelect} title={citySelect}/>*/}
-            {/*<LocalStorage/>*/}
-            {/*<Counter/>
-            <Rating value={value} onClick={setValue}/>*/}
-            {/*<UncontrolledRating/>*/}
-            <UncontrolledAccordion/>
-            {/*<Accordion title={'=Menu='} callBack={callBackAccordionHandler} collapsed={collapsed}/>
-            <OnOff value={on} callBack={callBackOnOffHandler}/>
-            <UncontrolledOnOff/>
-            <NewComponent students={filterStudents()} removeStudents={removeStudents}
+            <SuperSelectMemo value={valueSelect} onChange={changeSelect} title={citySelect}/>
+            <LocalStorageMemo/>
+            <CounterMemo/>
+            <RatingMemo value={value} onClick={setValue}/>
+            <UncontrolledRatingMemo/>
+            <UncontrolledAccordionMemo/>
+            <AccordionMemo title={'=Menu='} callBack={callBackAccordionHandler} collapsed={collapsed}/>
+            <OnOffMemo value={on} callBack={callBackOnOffHandler}/>
+            <UncontrolledOnOffMemo/>
+            <NewComponentMemo students={filterStudents()} removeStudents={removeStudents}
                           changeStudents={changeStudents} addNewStudent={addNewStudent}
-                          topCars={topCar} addNewCars={addNewCars}/>*/}
+                          topCars={topCar} addNewCars={addNewCars}/>
         </div>
     );
 }
