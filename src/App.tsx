@@ -12,6 +12,7 @@ import {NewComponent} from "./NewComponent";
 import {Accordion} from "./Accordion/Accordion";
 import OnOff from "./OnOff/OnOf";
 import {Counter} from "./Caunter/Caunter";
+import {Clock} from "./Clock/Clock";
 
 
 export type StudentType = {
@@ -105,18 +106,19 @@ const [valueSelect, setValueSelect] = useState('1')
     const NewComponentMemo = React.memo(NewComponent)
     return (
         <div>
-            <SuperSelectMemo value={valueSelect} onChange={changeSelect} title={citySelect}/>
-            <LocalStorageMemo/>
-            <CounterMemo/>
-            <RatingMemo value={value} onClick={setValue}/>
-            <UncontrolledRatingMemo/>
-            <UncontrolledAccordionMemo/>
-            <AccordionMemo title={'=Menu='} callBack={callBackAccordionHandler} collapsed={collapsed}/>
-            <OnOffMemo value={on} callBack={callBackOnOffHandler}/>
-            <UncontrolledOnOffMemo/>
-            <NewComponentMemo students={filterStudents()} removeStudents={removeStudents}
-                          changeStudents={changeStudents} addNewStudent={addNewStudent}
-                          topCars={topCar} addNewCars={addNewCars}/>
+            {/*<SuperSelectMemo value={valueSelect} onChange={changeSelect} title={citySelect}/>*/}
+            {/*<LocalStorageMemo/>*/}
+            {/*<CounterMemo/>*/}
+            {/*<RatingMemo value={value} onClick={setValue}/>*/}
+            {/*<UncontrolledRatingMemo/>*/}
+            {/*<UncontrolledAccordionMemo/>*/}
+            {/*<AccordionMemo title={'=Menu='} callBack={callBackAccordionHandler} collapsed={collapsed}/>*/}
+            {/*<OnOffMemo value={on} callBack={callBackOnOffHandler}/>*/}
+            {/*<UncontrolledOnOffMemo/>*/}
+            {/*<NewComponentMemo students={filterStudents()} removeStudents={removeStudents}*/}
+            {/*              changeStudents={changeStudents} addNewStudent={addNewStudent}*/}
+            {/*              topCars={topCar} addNewCars={addNewCars}/>*/}
+            <Clock/>
         </div>
     );
 }
