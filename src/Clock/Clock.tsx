@@ -3,7 +3,6 @@ import {AnalogClock} from "./AnalogClock";
 import {DigitalClock} from "./DigitalClock";
 
 
-
 export const Clock = () => {
     const [data, setData] = useState(new Date())
     const [digital, setDigital] = useState(true)
@@ -11,12 +10,10 @@ export const Clock = () => {
     useEffect(() => {
         const intervalClock = setInterval(() => {
             setData(new Date())
-            return () => {
-                clearInterval(intervalClock)
-            }
-
         }, 1000)
-
+        return () => {
+            clearInterval(intervalClock)
+        }
     }, [])
 
     const changeWatch = () => {
