@@ -11,6 +11,10 @@ export const Clock = () => {
     useEffect(() => {
         const intervalClock = setInterval(() => {
             setData(new Date())
+            return () => {
+                clearInterval(intervalClock)
+            }
+
         }, 1000)
 
     }, [])
