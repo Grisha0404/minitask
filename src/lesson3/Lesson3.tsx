@@ -32,8 +32,8 @@ const Lesson3 = () => {
     const searchFilm = async () => {
         try {
             const {data} = await API.searchFilmsByTitle(searchName);
-            const {Search, Response} = data;
-            Response === 'True' ? setSerachResult(Search) : setSerachResult(Search);
+            const {Search, Error, Response} = data;
+            Response === 'True' ? setSerachResult(Search) : setSerachResult(Error);
         } catch (err) {
             console.log('err ', err);
         }
