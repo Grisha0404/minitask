@@ -15,6 +15,9 @@ const API = {
         //return axiosInstance.get(query).then(res => res.data);
     },
     searchFilmsByType: (title: string, type: string) => {
+        const query = `/?apikey=${key}&s=${title}&s=${type}`;
+        return axiosInstance.get<{}, TestType<ResponseType>>(query);
+
     }
 };
 
@@ -26,6 +29,7 @@ export type ResponseType = {
     Search: Array<FilmsType>;
     Error: SetStateAction<FilmsType[] | undefined>;
     Response: string;
+
 }
 
 
