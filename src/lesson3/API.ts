@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {FilmsType} from "./Lesson3";
 
 const configOMB = {
     baseURL: 'http://www.omdbapi.com',
@@ -21,7 +22,7 @@ type TestType<T> = {
 }
 
 type ResponseType = {
-    Search: Array<any>;
+    Search: Array<FilmsType>;
     Error: string;
     Response: string;
 }
