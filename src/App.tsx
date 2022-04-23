@@ -13,6 +13,7 @@ import {Accordion} from "./Accordion/Accordion";
 import OnOff from "./OnOff/OnOf";
 import {Counter} from "./Caunter/Caunter";
 import {Clock} from "./Clock/Clock";
+import Lesson3 from "./lesson3/Lesson3";
 
 
 export type StudentType = {
@@ -118,7 +119,8 @@ const [valueSelect, setValueSelect] = useState('1')
             {/*<NewComponentMemo students={filterStudents()} removeStudents={removeStudents}*/}
             {/*              changeStudents={changeStudents} addNewStudent={addNewStudent}*/}
             {/*              topCars={topCar} addNewCars={addNewCars}/>*/}
-            <Clock/>
+            {/*<Clock/>*/}
+            <Lesson3/>
         </div>
     );
 }
