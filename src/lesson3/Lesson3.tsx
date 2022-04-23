@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {SetStateAction, useState} from 'react';
 import API from './API';
 import './lesson_3';
 import Films from "./Films";
@@ -14,9 +14,10 @@ export type FilmsType = {
 
 const Lesson3 = () => {
     const [searchName, setSearchName] = useState<string>('');
-    const [serachResult, setSerachResult] = useState<FilmsType[]>();
+    const [serachResult, setSerachResult] = useState<FilmsType[] | undefined>();
     const [searchNameByType, setSearchNameByType] = useState('');
     const [serachResultByType, setSerachResultByType] = useState('');
+    const [serachError, setSerachError] = useState<SetStateAction<FilmsType[] | undefined>>();
 
     // const searchFilm = () => {
     //     API.searchFilmsByTitle(searchName)
@@ -33,16 +34,28 @@ const Lesson3 = () => {
         try {
             const {data} = await API.searchFilmsByTitle(searchName);
             const {Search, Error, Response} = data;
-            Response === 'True' ? setSerachResult(Search) : setSerachResult(Error);
+            Response === 'True' ? setSerachResult(Search) : setSerachError(Error);
         } catch (err) {
             console.log('err ', err);
         }
     };
-
-    const searchByType = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const searchByType = async (e: React.MouseEvent<HTMLButtonElement>) => {
         const type: string = e.currentTarget.dataset.t ? e.currentTarget.dataset.t : '';
-        API.searchFilmsByType(searchNameByType, type)
+        try {
+            const {data} = await API.searchFilmsByType(searchNameByType, type);
+            const {Search, Error, Response} = data;
+            Response === 'True' ? setSerachResultByType(JSON.stringify(Search)) : setSerachResultByType(JSON.stringify(Error))
+        } catch (err) {
+            console.log('err ', err);
+        }
     }
+
+    // const searchByType = (e: React.MouseEvent<HTMLButtonElement>) => {
+    //     const type: string = e.currentTarget.dataset.t ? e.currentTarget.dataset.t : '';
+    //     console.log(type)
+    //     API.searchFilmsByType(searchNameByType, type)
+    // }
+
 
     return (
         <div>
@@ -53,7 +66,7 @@ const Lesson3 = () => {
                 <button onClick={searchFilm}>Search</button>
                 <div className={style.film}>
                     {serachResult?.map((f, index) => <Films key={index} id={f.id} Title={f.Title} Type={f.Type}
-                                                   Poster={f.Poster}/>)}
+                                                            Poster={f.Poster}/>) || serachError}
                 </div>
             </div>
 
