@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {FilmsType} from "./Lesson3";
+import {SetStateAction} from "react";
 
 const configOMB = {
     baseURL: 'http://www.omdbapi.com',
@@ -21,9 +22,9 @@ type TestType<T> = {
     data: T
 }
 
-type ResponseType = {
+export type ResponseType = {
     Search: Array<FilmsType>;
-    Error: string;
+    Error: SetStateAction<FilmsType[] | undefined>;
     Response: string;
 }
 
