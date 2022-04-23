@@ -1,0 +1,13 @@
+.film{
+    display: flex;
+    background-color: #61dafb;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.filmInfo{
+    width: 150px;
+    text-align: center;
+}
+.filmInfo img {
+
+}
