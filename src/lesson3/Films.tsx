@@ -24,7 +24,7 @@ const Films: React.FC<FilmsType> = ({
                     :
                     <span onClick={() => setInfo(!info)}>
                         <img src={Poster} alt={'POSTER'}/>
-                        <div style={{textAlign:"center"}}>
+                        <div style={{textAlign: "center"}}>
                         <div>{Title}</div>
                         <p>{Type}</p>
                         </div>
