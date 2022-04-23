@@ -5,7 +5,7 @@ import {SetStateAction} from "react";
 const configOMB = {
     baseURL: 'http://www.omdbapi.com',
 };
-const key = '995f97b1';
+const key = 'fa996ca2';
 const axiosInstance = axios.create(configOMB);
 
 const API = {
