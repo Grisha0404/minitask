@@ -52,7 +52,7 @@ const Lesson3 = () => {
                 <input type="text" value={searchName} onChange={(e) => setSearchName(e.currentTarget.value)}/>
                 <button onClick={searchFilm}>Search</button>
                 <div className={style.film}>
-                    {serachResult?.map(f => <Films key={f.id} id={f.id} Title={f.Title} Type={f.Type}
+                    {serachResult?.map((f, index) => <Films key={index} id={f.id} Title={f.Title} Type={f.Type}
                                                    Poster={f.Poster}/>)}
                 </div>
             </div>
