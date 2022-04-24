@@ -17,7 +17,7 @@ const Lesson3 = () => {
     const [serachResult, setSerachResult] = useState<FilmsType[] | undefined>();
     const [searchNameByType, setSearchNameByType] = useState('');
     const [serachResultByType, setSerachResultByType] = useState('');
-    const [serachError, setSerachError] = useState<SetStateAction<FilmsType[] | undefined>>();
+    const [serachError, setSerachError] = useState<string>('');
 
     // const searchFilm = () => {
     //     API.searchFilmsByTitle(searchName)
@@ -34,7 +34,7 @@ const Lesson3 = () => {
         try {
             const {data} = await API.searchFilmsByTitle(searchName);
             const {Search, Error, Response} = data;
-            Response === 'True' ? setSerachResult(Search) : setSerachError(Error);
+            Response === 'True' ? setSerachResult(Search) : setSerachError(JSON.stringify(Error));
         } catch (err) {
             console.log('err ', err);
         }
